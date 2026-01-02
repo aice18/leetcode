@@ -1,2 +1,22 @@
-# leetcode
-This repository documents my commitment to solving at least 1000 LeetCode problems. I am highly motivated and disciplined in strengthening my Data Structures &amp; Algorithms skills through consistent practice. The goal is not just problem completion, but mastering patterns, improving efficiency, and becoming interview-ready.
+# 🚀 LeetCode Practice Progress
+
+This repository contains my solutions to selected **LeetCode problems**, focusing on **Data Structures & Algorithms** and improving problem-solving skills for technical interviews.
+
+
+## 📌 Problems Solved
+
+| # | Problem Name 
+| 1 | Two Sum
+| 2 | Add Two Numbers 
+| 3 | Longest Substring Without Repeating Characters 
+
+
+## 🛠️ Tech Stack
+- Programming Language: `Java`
+- Platform: **LeetCode**
+
+## 🎯 Goals
+- Strengthen DSA fundamentals
+- Improve time & space complexity optimization
+- Prepare for product-based company interviews
+- Maintain consistency 💪
