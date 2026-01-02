@@ -1,0 +1,49 @@
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        // Create a dummy head node to simplify list construction
+        ListNode dummyHead = new ListNode(0);
+      
+        // Initialize carry for addition overflow
+        int carry = 0;
+      
+        // Pointer to track current position in result list
+        ListNode current = dummyHead;
+      
+        // Continue while there are digits to process or carry exists
+        while (l1 != null || l2 != null || carry != 0) {
+            // Get current digit values (0 if node is null)
+            int digit1 = (l1 == null) ? 0 : l1.val;
+            int digit2 = (l2 == null) ? 0 : l2.val;
+          
+            // Calculate sum of current digits plus carry
+            int sum = digit1 + digit2 + carry;
+          
+            // Update carry for next iteration (integer division)
+            carry = sum / 10;
+          
+            // Create new node with the current digit (remainder after division by 10)
+            current.next = new ListNode(sum % 10);
+          
+            // Move current pointer to the newly created node
+            current = current.next;
+          
+            // Move to next nodes in input lists if they exist
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        }
+      
+        // Return the actual head of result list (skip dummy head)
+        return dummyHead.next;
+    }
+}
+
+// I solved it using Iterative Approach with Carry Handling
+// This simple approach involves iterating through both linked lists, summing corresponding digits, and managing the carry for sums greater than 9.
+// Time Complexity: O(n), the algorithm traverses both linked lists l1 and l2 exactly once. In each iteration, it processes one node from each list and performs a constant amount of work (addition, carry handling, and node creation). 
+    // Therefore, the time complexity is linear relative to the length of the longer list.
+// Space Complexity: O(n), the space complexity is determined by the space required to store the result linked list. Since a new node is created for each digit of the sum, the space complexity is proportional to the length of the resulting list, which is O(n). 
+    // The auxiliary space used for variables such as carry, dummy, and current is constant (O(1)), but the new linked list accounts for the overall O(n) space complexity.
