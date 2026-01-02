@@ -1,0 +1,39 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int len = s.length();
+        if (len == 0)
+            return 0;
+        int maxLen = 0;
+        int left=0, right=0;
+        Map<Character, Integer> map = new HashMap();
+        while(right < len){
+            //check if s[right] is in map and its position >= left
+            char cur = s.charAt(right);
+            int curExistingPos = map.getOrDefault(cur, -1);
+            if (curExistingPos != -1 && curExistingPos>= left){
+                //run into a repeating
+                //calculate the window size and update the max value
+                maxLen = Math.max(maxLen, right - left);
+                //fast forward the left
+                left = curExistingPos + 1;                
+            }
+            map.put(cur, right);
+            right++;
+        }
+        return Math.max(maxLen, right - left);
+    }
+}
+
+
+// I solved it using the Brute Force Approach
+// The Concept
+// The brute force approach is straightforward: check every possible substring and determine if it has all unique characters. Keep track of the maximum length found.
+
+// Algorithm Steps
+// Generate all possible substrings using two nested loops
+// For each substring, check if all characters are unique
+// If unique, update the maximum length
+// Return the maximum length
+
+// Time Complexity: O(n³)
+// Space Complexity: O(min(n, m))
