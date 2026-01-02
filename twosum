@@ -10,6 +10,9 @@ class Solution {
         return null;
     }
 }
+
 //I have solved it using brute force approach.
 //In this brute force approach, we use two loops to compare each number with every other number in the array to find a pair that sums up to the target. 
 //The outer loop runs n times, and for each iteration of the outer loop, the inner loop runs n times as well, leading to a total of n * n iterations.
+//Time Complexity: O(n2). Where n is the length of the array. This is because for each element in the array, we are checking every other element.
+Space Complexity: O(1). This solution does not use any additional data structures that grow with input size; it only uses a constant amount of extra space to store variables.
