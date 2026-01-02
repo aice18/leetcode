@@ -1,0 +1,15 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+        return null;
+    }
+}
+//I have solved it using brute force approach.
+//In this brute force approach, we use two loops to compare each number with every other number in the array to find a pair that sums up to the target. 
+//The outer loop runs n times, and for each iteration of the outer loop, the inner loop runs n times as well, leading to a total of n * n iterations.
