@@ -1,0 +1,58 @@
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        
+        if(nums1.length < nums2.length) 
+            return findMedianSortedArrays(nums2, nums1);
+
+        int i = 0, j = 0, k = 0;
+        int medianIndex = (nums1.length-nums2.length)/2 + nums2.length + 1;
+        int arr[] = new int[medianIndex];
+        
+        while(i < nums1.length && j < nums2.length && k != medianIndex){
+            if(nums1[i] < nums2[j]){
+                arr[k] = nums1[i++];
+            }else{
+                arr[k] = nums2[j++];
+            }
+            k++;
+        }
+
+        while(i < nums1.length && k != medianIndex){
+            arr[k++] = nums1[i++];
+        }
+
+        while(j < nums2.length && k != medianIndex){
+            arr[k++] = nums2[j++];
+        }
+       
+        return (nums1.length + nums2.length) % 2 != 0 ? 
+               arr[(nums1.length + nums2.length)/2] : 
+               (double)(arr[((nums1.length + nums2.length)-1)/2] 
+                        + 
+                        arr[((nums1.length + nums2.length)-1)/2 + 1])/2;
+    }
+}
+
+// Algorithm Explanation
+— Array Length Comparison:
+The algorithm ensures that nums1 is the larger array. If not, it swaps nums1 and nums2.
+— Initialization:
+Indices i, j, and k are initialized for nums1, nums2, and the merged array, respectively.
+— Median Index Calculation:
+The median index (medianIndex) is calculated based on the lengths of nums1 and nums2.
+— Merging Arrays:
+The algorithm merges elements from nums1 and nums2 into the array arr until reaching the median index.
+— Handling Remaining Elements:
+The algorithm handles any remaining elements in nums1 and nums2 after reaching the median index.
+— Median Calculation:
+The median is calculated based on whether the combined length of the arrays is even or odd.
+If odd, the median is the element at index (nums1.length + nums2.length) / 2.
+If even, the median is the average of the elements at indices ((nums1.length + nums2.length) - 1) / 2 and ((nums1.length + nums2.length) - 1) / 2 + 1.
+— Return Result:
+The calculated median is returned as a double.
+
+//Complexity Analysis
+Time Complexity: O(m + n)
+- Runtime: 1ms (Beats 100% of Java submissions in LeetCode)
+Space Complexity: O( min(m, n) )
+- Memory Consumed: 44.5 MB (Beats 70.8% of Java submissions in LeetCode)
